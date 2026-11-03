@@ -29,13 +29,23 @@ export default function Users() {
     return (
         <>
         <h2>Telefonok</h2>
-        <ul>
+        <table>
+            <tr>
+                <th>Nev</th>
+                <th>Gyarto</th>
+                <th>Ar</th>
+                <th>Memoria</th>
+            </tr>
             {telefonok.map( (telefon) => (
-                <li key={telefon.id}>
-                    {telefon.nev} - {telefon.gyarto} - {telefon.ar} Ft - {telefon.memoria} GB
-                </li>
+                <tr key={telefon.id}>
+                    <td>{telefon.nev}</td>
+                    <td>{telefon.gyarto}</td>
+                    <td>{telefon.ar} Ft</td>
+                    <td>{telefon.memoria} GB</td>
+                </tr>
             ))}
-        </ul>
+            </table>
+
         </>
     )
 }
