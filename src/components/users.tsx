@@ -12,6 +12,7 @@ type Telefon = {
 
 export default function Users() {
     const [telefonok, setTelefonok] = useState<Telefon[]>([])
+    const [asc, setAsc] = useState(true)
 
     useEffect ( () => {
         async function adatokBetoltese () {
@@ -26,9 +27,19 @@ export default function Users() {
       adatokBetoltese()
     },[] )
 
+
+    function rendezes() {
+        setAsc(!asc)
+        if (asc) {
+            setTelefonok([...telefonok].sort((a,b) => a.nev.localeCompare(b.nev)))
+        } else {
+            setTelefonok([...telefonok].sort((a,b) => b.nev.localeCompare(a.nev)))
+        }
+    }
     return (
         <>
         <h2>Telefonok</h2>
+        <button onClick={rendezes}>nev szerinti rendezés</button>
         <table>
             <tr>
                 <th>Nev</th>
